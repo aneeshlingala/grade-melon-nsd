@@ -1985,9 +1985,9 @@ export default [
 		parentVueUrl: "https://az-mai.edupoint.com/",
 	},
 	{
-		address: "Rockville MD 20850",
-		name: "Montgomery County Public Schools",
-		parentVueUrl: "https://md-mcps-psv.edupoint.com",
+		address: "3330 Monte Villa Pkwy, Bothell, WA 98021",
+		name: "Northshore School District",
+		parentVueUrl: "https://wa-nor-psv.edupoint.com",
 	},
 	{
 		address: "Montrose MI 48457",
