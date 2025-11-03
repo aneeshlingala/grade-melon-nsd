@@ -80,16 +80,28 @@ const letterGradeColor = (letterGrade: string) => {
 };
 
 const letterGrade = (grade: number): string => {
-	if (grade >= 89.5) {
+	if (grade >= 93) {
 		return "A";
-	} else if (grade >= 79.5) {
+	} else if (grade >= 90) {
+		return "A-";
+	} else if (grade >= 87) {
+		return "B+";
+	} else if (grade >= 83) {
 		return "B";
-	} else if (grade >= 69.5) {
-		return "C";
-	} else if (grade >= 59.5) {
-		return "D";
-	} else if (!isNaN(grade)) {
-		return "E";
+	} else if (grade >= 80) {
+		return "B-";
+	} else if (grade >= 77) {
+		return "C+";
+	} else if (grade >= 73) {
+		return "C-";
+	} else if (grade >= 70) {
+		return "B";	
+	} else if (grade >= 67) {
+		return "D+";
+	} else if (grade >= 60) {
+		return "D";	
+	} else if (grade >= 40) {
+		return "F";	
 	} else {
 		return "N/A";
 	}
@@ -103,13 +115,25 @@ const letterGPA = (letterGrade: string, weighted: boolean): number => {
 	switch (letterGrade) {
 		case "A":
 			return gpa + 4;
+		case "A-":
+			return gpa + 3.7;
+		case "B+":
+			return gpa + 3.3;
 		case "B":
-			return gpa + 3;
+			return gpa + 3.0;
+		case "B-":
+			return gpa + 2.7;
+		case "C+":
+			return gpa + 2.3;
 		case "C":
-			return gpa + 2;
+			return gpa + 2.0;
+		case "C-":
+			return gpa + 1.7;
+		case "D+":
+			return gpa + 1.3;
 		case "D":
 			return gpa + 1;
-		default:
+		case "F":
 			return gpa + 0;
 	}
 };
