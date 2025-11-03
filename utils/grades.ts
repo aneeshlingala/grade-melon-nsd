@@ -62,37 +62,79 @@ interface Grades {
 	}[];
 }
 
-const letterGradeColor = (letterGrade: string) => {
-	switch (letterGrade) {
-		case "A":
-			return "green";
-		case "B":
-			return "blue";
-		case "C":
-			return "yellow";
-		case "D":
-			return "orange";
-		case "E":
-			return "red";
-		default:
-			return "gray";
-	}
-};
-
+// NSD Grading Policy Letter Grade
 const letterGrade = (grade: number): string => {
-	if (grade >= 89.5) {
+	if (grade >= 93 && grade <= 100) {
 		return "A";
-	} else if (grade >= 79.5) {
+	} else if (grade >= 90) {
+		return "A-";
+	} else if (grade >= 87) {
+		return "B+";
+	} else if (grade >= 83) {
 		return "B";
-	} else if (grade >= 69.5) {
+	} else if (grade >= 80) {
+		return "B-";
+	} else if (grade >= 77) {
+		return "C+";
+	} else if (grade >= 73) {
 		return "C";
-	} else if (grade >= 59.5) {
+	} else if (grade >= 70) {
+		return "C-";
+	} else if (grade >= 67) {
+		return "D+";
+	} else if (grade >= 60) {
 		return "D";
-	} else if (!isNaN(grade)) {
-		return "E";
+	} else if (grade >= 0 && !isNaN(grade)) {
+		return "F";
 	} else {
 		return "N/A";
 	}
+};
+
+// NSD Grading Policy GPA Scale
+const letterGPA = (letterGrade: string, weighted: boolean): number => {
+	let baseGPA: number;
+
+	switch (letterGrade) {
+		case "A":
+			baseGPA = 4.0;
+			break;
+		case "A-":
+			baseGPA = 3.7;
+			break;
+		case "B+":
+			baseGPA = 3.3;
+			break;
+		case "B":
+			baseGPA = 3.0;
+			break;
+		case "B-":
+			baseGPA = 2.7;
+			break;
+		case "C+":
+			baseGPA = 2.3;
+			break;
+		case "C":
+			baseGPA = 2.0;
+			break;
+		case "C-":
+			baseGPA = 1.7;
+			break;
+		case "D+":
+			baseGPA = 1.3;
+			break;
+		case "D":
+			baseGPA = 1.0;
+			break;
+		case "F":
+			baseGPA = 0.0;
+			break;
+		default:
+			return NaN;
+	}
+
+	// Weighted GPA adds +1.0 (e.g., for honors/AP classes)
+	return weighted ? baseGPA + 1.0 : baseGPA;
 };
 
 const letterGPA = (letterGrade: string, weighted: boolean): number => {
